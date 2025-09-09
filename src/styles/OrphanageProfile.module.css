@@ -1,0 +1,334 @@
+.orphanageProfile {
+  min-height: 100vh;
+  background-color: var(--white);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Banner Section */
+.banner {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.bannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Info Section */
+.infoSection {
+  padding: 40px 0;
+}
+
+.infoCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 32px;
+  margin-bottom: 32px;
+}
+
+.infoContent h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--text-black);
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--light-gray);
+  font-size: 1.1rem;
+}
+
+.contactItem svg {
+  color: var(--primary-maroon);
+}
+
+.btn {
+  padding: 16px 32px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition);
+  font-size: 16px;
+}
+
+.btnDonate {
+  background-color: var(--primary-maroon);
+  color: var(--white);
+}
+
+.btnDonate:hover {
+  background-color: #660029;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Stats */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.statCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  transition: var(--transition);
+}
+
+.statCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.statCard:nth-child(1) .statIcon {
+  background: linear-gradient(135deg, #ff6b6b, #ff5722);
+}
+
+.statCard:nth-child(2) .statIcon {
+  background: linear-gradient(135deg, #4ecdc4, #26a69a);
+}
+
+.statCard:nth-child(3) .statIcon {
+  background: linear-gradient(135deg, #45b7d1, #2196f3);
+}
+
+.statIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+
+.statContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.statNumber {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-black);
+}
+
+.statLabel {
+  font-size: 1rem;
+  color: var(--light-gray);
+}
+
+/* Needs Section */
+.needsSection {
+  display: flex;
+  gap: 48px;
+  padding: 48px 0;
+}
+
+.needsContent {
+  flex: 2;
+}
+
+.needsContent h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: var(--text-black);
+  text-align: center;
+}
+
+.needsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.needsCategory h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--primary-maroon);
+  text-align: center;
+}
+
+.needsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.needItem {
+  border: 2px solid var(--border-gray);
+  border-radius: var(--border-radius);
+  padding: 16px;
+  transition: var(--transition);
+}
+
+.needItem:hover {
+  border-color: var(--primary-maroon);
+  background-color: #fafafa;
+}
+
+.needItem h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-black);
+}
+
+.needItem p {
+  color: var(--light-gray);
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.otherNeeds {
+  margin-top: 32px;
+}
+
+.otherNeeds h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--primary-maroon);
+  text-align: center;
+}
+
+.otherNeedsContent {
+  border: 2px solid var(--border-gray);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  background-color: #fafafa;
+}
+
+.otherNeedsContent p {
+  color: var(--light-gray);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.needsIllustration {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.needsIllustration img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+/* Donate Section */
+.donateSection {
+  text-align: center;
+  padding: 48px 0;
+}
+
+.btnDonateLarge {
+  background-color: var(--primary-maroon);
+  color: var(--white);
+  font-size: 1.2rem;
+  padding: 20px 48px;
+  border-radius: 12px;
+}
+
+.btnDonateLarge:hover {
+  background-color: #660029;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--text-black);
+  color: var(--white);
+  padding: 24px 0;
+  text-align: center;
+}
+
+.footer span {
+  font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .needsSection {
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .needsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: 200px;
+  }
+  
+  .infoCard {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+  
+  .infoContent h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  .stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .statCard {
+    justify-content: center;
+  }
+  
+  .needsContent h2 {
+    font-size: 1.5rem;
+  }
+  
+  .btnDonateLarge {
+    font-size: 1rem;
+    padding: 16px 32px;
+  }
+}

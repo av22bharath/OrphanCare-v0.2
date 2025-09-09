@@ -1,0 +1,123 @@
+.header {
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.logoText {
+  color: var(--primary-maroon);
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--text-black);
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 24px;
+  transition: var(--transition);
+  position: relative;
+}
+
+.navLink:hover {
+  background-color: var(--secondary-gray);
+  color: var(--primary-maroon);
+}
+
+.navLink.active {
+  background-color: var(--primary-maroon);
+  color: var(--white);
+}
+
+.loginBtn {
+  background-color: var(--primary-maroon);
+  color: var(--white);
+}
+
+.loginBtn:hover {
+  background-color: #660029;
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: var(--text-black);
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.logoutBtn:hover {
+  background-color: var(--secondary-gray);
+  color: var(--primary-maroon);
+}
+
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-black);
+}
+
+.mobileNav {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  background-color: var(--white);
+  border-top: 1px solid var(--border-gray);
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+  
+  .menuButton {
+    display: block;
+  }
+  
+  .mobileNav {
+    display: flex;
+  }
+  
+  .navLink {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+  
+  .logoutBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
