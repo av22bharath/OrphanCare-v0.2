@@ -121,3 +121,10 @@
     justify-content: center;
   }
 }
+.logo img,
+.logoImg {
+  height: 50px;   /* adjust logo size */
+  width: auto;
+  object-fit: contain;
+  display: block;
+}

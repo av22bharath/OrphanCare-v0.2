@@ -168,7 +168,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ role }) => {
           
           <div className={styles.illustrationSection}>
             <img 
-              src="https://images.pexels.com/photos/8923189/pexels-photo-8923189.jpeg?auto=compress&cs=tinysrgb&w=500&h=600&fit=crop"
+              src="https://images.pexels.com/photos/1250452/pexels-photo-1250452.jpeg"
               alt="Mother and child illustration"
               className={styles.illustration}
             />

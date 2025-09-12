@@ -19,6 +19,7 @@ import SuccessPage from './pages/SuccessPage';
 import DonationRequestsPage from './pages/DonationRequestsPage';
 import Orphanages from './pages/Orphanages';
 import { UserProvider } from "./Context/userContext"
+import AddRequirement from './pages/AddRequirement';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="/donation/success" element={<SuccessPage />} />
           <Route path="/orphanage/requests" element={<DonationRequestsPage />} />
           <Route path="/orphanages" element={<Orphanages />} />
+          <Route path="/add-requirement/:category" element={<AddRequirement />} />
         </Routes>
           </UserProvider>
       </div>

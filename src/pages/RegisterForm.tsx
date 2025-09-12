@@ -179,7 +179,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ role }) => {
           
           <div className={styles.illustrationSection}>
             <img 
-              src="https://images.pexels.com/photos/8923113/pexels-photo-8923113.jpeg?auto=compress&cs=tinysrgb&w=500&h=600&fit=crop"
+              src="https://images.pexels.com/photos/3401402/pexels-photo-3401402.jpeg"
               alt={`${role} registration illustration`}
               className={styles.illustration}
             />

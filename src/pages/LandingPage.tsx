@@ -52,14 +52,14 @@ const LandingPage: React.FC = () => {
           <div className={styles.missionImages}>
             <div className={styles.imageCard}>
               <img 
-                src="https://images.pexels.com/photos/8419063/pexels-photo-8419063.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop" 
+                src="https://images.pexels.com/photos/764681/pexels-photo-764681.jpeg" 
                 alt="Children learning together"
                 loading="lazy"
               />
             </div>
             <div className={styles.imageCard}>
               <img 
-                src="https://images.pexels.com/photos/8923189/pexels-photo-8923189.jpeg?auto=compress&cs=tinysrgb&w=500&h=300&fit=crop" 
+                src="https://media.istockphoto.com/id/2163548774/vector/a-flat-style-illustration-of-orphanage-charity.jpg?s=612x612&w=0&k=20&c=b8PLYro_CWvWCDsDPt41AfzWNVSLi9Vrb31sDbCP1bI=" 
                 alt="Happy children playing"
                 loading="lazy"
               />

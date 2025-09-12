@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, LogOut } from 'lucide-react';
-import { authService } from '../utils/auth';
 import LogoutModal from './LogoutModal';
 import styles from '../styles/Header.module.css';
+import logo from '../assets/logooo.jpg'; //  Import your logo
 
 interface HeaderProps {
   userType?: 'donor' | 'orphanage' | null;
@@ -18,7 +18,6 @@ const Header: React.FC<HeaderProps> = ({ userType, userName }) => {
 
   const handleLogout = () => {
     setShowLogoutModal(false);
-    authService.logout();
     navigate('/');
   };
 
@@ -40,13 +39,12 @@ const Header: React.FC<HeaderProps> = ({ userType, userName }) => {
           >
             Profile
           </Link>
-           <button>
-            <Link to="/orphanages"
-              className={`${styles.navLink} ${isActive('/orphanages') ? styles.active : ''}`}
-              >
-            Orphanage
-            </Link>
-          </button>
+          <Link 
+            to="/orphanages" 
+            className={`${styles.navLink} ${isActive('/orphanages') ? styles.active : ''}`}
+          >
+            Orphanages
+          </Link>
           <button 
             onClick={() => setShowLogoutModal(true)}
             className={styles.logoutBtn}
@@ -57,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({ userType, userName }) => {
         </>
       );
     }
-    
+
     if (userType === 'orphanage') {
       return (
         <>
@@ -105,9 +103,11 @@ const Header: React.FC<HeaderProps> = ({ userType, userName }) => {
     <>
       <header className={styles.header}>
         <div className={styles.container}>
+          
+          {/* ✅ Logo on top-left */}
           <div className={styles.logo}>
             <Link to="/">
-              <span className={styles.logoText}>OrphanCare Network</span>
+              <img src={logo} alt="Orphan Care Network Logo" className={styles.logoImg} />
             </Link>
           </div>
 

@@ -148,7 +148,7 @@ const DonationRequestsPage: React.FC = () => {
       {/* Banner */}
       <section className={styles.banner}>
         <img 
-          src="https://images.pexels.com/photos/8923113/pexels-photo-8923113.jpeg?auto=compress&cs=tinysrgb&w=1200&h=300&fit=crop"
+          src="https://images.pexels.com/photos/939700/pexels-photo-939700.jpeg"
           alt="Orphanage banner"
           className={styles.bannerImage}
         />

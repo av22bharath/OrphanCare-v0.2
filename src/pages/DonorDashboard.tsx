@@ -120,7 +120,7 @@ console.log("user from dashboard:",user)
 
         {/* Orphanages Near Me */}
         <section className={styles.orphanages}>
-          <h2 className={styles.sectionTitle}>Orphanages near me</h2><br></br>
+          <h2 className={styles.sectionTitle}>List of Orphanages</h2><br></br>
           <div className={styles.orphanagesGrid}>
             <div className={styles.orphanageCard}>
               <h4>Abhayadhama</h4>

@@ -206,7 +206,7 @@
   bottom: 24px;
   right: 32px;
   font-size: 14px;
-  color: var(--light-gray);
+  color: white;
 }
 
 @media (max-width: 768px) {

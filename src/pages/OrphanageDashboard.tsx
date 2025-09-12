@@ -1,132 +1,231 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Users, Heart, BookOpen, Edit } from 'lucide-react';
-import Header from '../components/Header';
-import styles from '../styles/OrphanageDashboard.module.css';
+// src/pages/OrphanageDashboard.tsx
+import React, { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  MapPin,
+  Phone,
+  User,
+  Edit,
+  Plus,
+  ShoppingCart,
+  Bed,
+  Utensils,
+  BookOpen,
+  PenTool,
+  Package,
+} from "lucide-react";
+import Header from "../components/Header";
+import styles from "../styles/OrphanageDashboard.module.css";
+
+interface Requirement {
+  category: string;
+  name: string;
+  quantity: string;
+  unit: string;
+}
 
 const OrphanageDashboard: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [requirements, setRequirements] = useState<Requirement[]>([]);
+
+  // ✅ Capture new requirement when coming back from AddRequirement page
+  useEffect(() => {
+    if (location.state && (location.state as any).newRequirement) {
+      const newReq = (location.state as any).newRequirement as Requirement;
+      setRequirements((prev) => [...prev, newReq]);
+      // Clear state after adding to avoid duplication on refresh
+      navigate(location.pathname, { replace: true });
+    }
+  }, [location, navigate]);
+
+  // Helper to render requirements by category
+  const renderRequirements = (category: string) => {
+    return requirements
+      .filter((r) => r.category?.toLowerCase() === category.toLowerCase())
+      .map((r, idx) => (
+        <div key={idx} className={styles.requirementCard}>
+          <span>{r.name}</span>
+          <span>
+            {r.quantity} {r.unit}
+          </span>
+        </div>
+      ));
+  };
+
   return (
     <div className={styles.orphanageDashboard}>
       <Header userType="orphanage" />
-      
-      {/* Hero Section */}
-      <section className={styles.hero}>
-        <div className={styles.heroBackground}>
-          <svg viewBox="0 0 1200 600" className={styles.heroWave}>
-            <path d="M0,0 C300,150 500,50 1200,200 L1200,0 Z" fill="var(--primary-maroon)" />
-          </svg>
-        </div>
-        
+
+      {/* Profile Section */}
+      <section className={styles.profileSection}>
         <div className={styles.container}>
-          <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>
-              "Hope begins here"
-            </h1>
-            <p className={styles.heroText}>
-              Welcome to OrphanCare Network. Together we can provide better care and opportunities for children in need.
-            </p>
+          <h2 className={styles.welcomeText}>
+            Welcome back, <span className={styles.highlight}>Abhyadama</span> 👋
+          </h2>
+          <p className={styles.subtitle}>
+            We’re glad to see you again! Here’s your profile overview.
+          </p>
+
+          <div className={styles.profileCard}>
+            <div className={styles.profileIcon}>
+              <User size={48} color="var(--primary-maroon)" />
+            </div>
+            <div className={styles.profileInfo}>
+              <h3>Abhyadama</h3>
+              <div className={styles.contactItem}>
+                <MapPin size={16} />
+                <span>Whitefield Post, Bengaluru 560066</span>
+              </div>
+              <div className={styles.contactItem}>
+                <Phone size={16} />
+                <span>+91 9876543210</span>
+              </div>
+            </div>
+            <Link
+              to="/orphanage/profile-complete"
+              className={`${styles.btn} ${styles.btnEdit}`}
+            >
+              <Edit size={16} />
+              Edit Your Profile
+            </Link>
+          </div>
+
+          {/* Stats Section */}
+          <div className={styles.statsSection}>
+            <div className={styles.statCard}>
+              <h3>800+</h3>
+              <p>Students</p>
+            </div>
+            <div className={styles.statCard}>
+              <h3>500+</h3>
+              <p>Male</p>
+            </div>
+            <div className={styles.statCard}>
+              <h3>300+</h3>
+              <p>Female</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <div className={styles.container}>
-        {/* Mission Section */}
-        <section className={styles.mission}>
-          <div className={styles.missionCard}>
-            <h2>Our Mission</h2>
-            <p>
-              To provide a safe, nurturing environment where children can grow, learn, and thrive while connecting with caring donors who believe in their potential.
-            </p>
-          </div>
-          
-          <div className={styles.missionImages}>
-            <div className={styles.imageCard}>
-              <img 
-                src="https://images.pexels.com/photos/8419063/pexels-photo-8419063.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" 
-                alt="Children learning"
-                loading="lazy"
-              />
-            </div>
-            <div className={styles.imageCard}>
-              <img 
-                src="https://images.pexels.com/photos/8923189/pexels-photo-8923189.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" 
-                alt="Happy children"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </section>
+      <hr className={styles.hrrr} />
 
-        {/* How to Donate Section */}
-        <section className={styles.howToDonate}>
-          <h2 className={styles.sectionTitle}>How to Donate?</h2>
-          
-          <div className={styles.donationSteps}>
-            <div className={styles.step}>
-              <div className={styles.stepIcon}>
-                <Users size={32} />
-                <span className={styles.stepNumber}>1</span>
-              </div>
-              <h3>Register as Donor</h3>
-            </div>
-            
-            <div className={styles.heartbeat}>
-              <svg viewBox="0 0 200 50" className={styles.heartbeatLine}>
-                <path d="M0,25 L50,25 L60,5 L70,45 L80,15 L90,35 L100,25 L200,25" stroke="var(--primary-maroon)" strokeWidth="2" fill="none" />
-              </svg>
-              <Heart size={24} fill="var(--primary-maroon)" color="var(--primary-maroon)" className={styles.heartIcon} />
-            </div>
-            
-            <div className={styles.step}>
-              <div className={styles.stepIcon}>
-                <Edit size={32} />
-                <span className={styles.stepNumber}>2</span>
-              </div>
-              <h3>View the requirements posted by Orphanages</h3>
-            </div>
-            
-            <div className={styles.heartbeat}>
-              <svg viewBox="0 0 200 50" className={styles.heartbeatLine}>
-                <path d="M0,25 L50,25 L60,5 L70,45 L80,15 L90,35 L100,25 L200,25" stroke="var(--primary-maroon)" strokeWidth="2" fill="none" />
-              </svg>
-            </div>
-            
-            <div className={styles.step}>
-              <div className={styles.stepIcon}>
-                <Heart size={32} />
-                <span className={styles.stepNumber}>3</span>
-              </div>
-              <h3>Donate what you want</h3>
-            </div>
-          </div>
-        </section>
-
-        {/* About Us Section */}
-        <section className={styles.about}>
-          <div className={styles.aboutCard}>
-            <h2 className={styles.sectionTitle}>About Us</h2>
-            <p>
-              OrphanCare Network is a dedicated platform that bridges the gap between 
-              generous donors and orphanages in need. We believe that every child deserves 
-              love, care, and opportunity to thrive.
-            </p>
-            <p>
-              Through our platform, we facilitate meaningful connections that transform 
-              lives, ensuring that resources reach the children who need them most while 
-              making the donation process transparent and impactful.
-            </p>
-          </div>
-        </section>
-      </div>
-
-      {/* Footer */}
-      <footer className={styles.footer}>
+      {/* Orphanage Needs Section */}
+      <section className={styles.needsSection}>
         <div className={styles.container}>
-          <div className={styles.footerContent}>
-            <span>OrphanCare Network</span>
+          <h2 className={styles.sectionTitle}>Orphanage Needs</h2>
+
+          {/* Basic Needs */}
+          <div className={styles.needGroup}>
+            <h3>Basic Needs</h3>
+            <div className={styles.needCards}>
+              <div className={styles.needCard}>
+                <ShoppingCart className={styles.needIcon} size={28} />
+                <span className={styles.needTitle}>Groceries</span>
+                <button
+                  className={styles.addBtn}
+                  onClick={() => navigate("/add-requirement/groceries")}
+                >
+                  <Plus size={18} />
+                </button>
+              </div>
+              <div className={styles.needCard}>
+                <Bed className={styles.needIcon} size={28} />
+                <span className={styles.needTitle}>Bedding</span>
+                <button
+                  className={styles.addBtn}
+                  onClick={() => navigate("/add-requirement/bedding")}
+                >
+                  <Plus size={18} />
+                </button>
+              </div>
+              <div className={styles.needCard}>
+                <Utensils className={styles.needIcon} size={28} />
+                <span className={styles.needTitle}>Food</span>
+                <button
+                  className={styles.addBtn}
+                  onClick={() => navigate("/add-requirement/food")}
+                >
+                  <Plus size={18} />
+                </button>
+              </div>
+
+              {/* Show Added Basic Needs */}
+              {renderRequirements("groceries")}
+              {renderRequirements("bedding")}
+              {renderRequirements("food")}
+            </div>
+          </div>
+
+          {/* Educational Supplies */}
+          <div className={styles.needGroup}>
+            <h3>Educational Supplies</h3>
+            <div className={styles.needCards}>
+              <div className={styles.needCard}>
+                <PenTool className={styles.needIcon} size={28} />
+                <span className={styles.needTitle}>Stationaries</span>
+                <button
+                  className={styles.addBtn}
+                  onClick={() => navigate("/add-requirement/stationaries")}
+                >
+                  <Plus size={18} />
+                </button>
+              </div>
+              <div className={styles.needCard}>
+                <BookOpen className={styles.needIcon} size={28} />
+                <span className={styles.needTitle}>Books</span>
+                <button
+                  className={styles.addBtn}
+                  onClick={() => navigate("/add-requirement/books")}
+                >
+                  <Plus size={18} />
+                </button>
+              </div>
+              <div className={styles.needCard}>
+                <Package className={styles.needIcon} size={28} />
+                <span className={styles.needTitle}>Others</span>
+                <button
+                  className={styles.addBtn}
+                  onClick={() => navigate("/add-requirement/educational-others")}
+                >
+                  <Plus size={18} />
+                </button>
+              </div>
+
+              {/* Show Added Educational Supplies */}
+              {renderRequirements("stationaries")}
+              {renderRequirements("books")}
+              {renderRequirements("educational-others")}
+            </div>
+          </div>
+
+          {/* Other Needs */}
+          <div className={styles.needGroup}>
+            <h3>Other Needs</h3>
+            <div className={styles.needCardsSingle}>
+              <div className={styles.needCard}>
+                <Package className={styles.needIcon} size={28} />
+                <span className={styles.needTitle}>General</span>
+                <button
+                  className={styles.addBtn}
+                  onClick={() => navigate("/add-requirement/general")}
+                >
+                  <Plus size={18} />
+                </button>
+              </div>
+
+              {/* Show Added General Needs */}
+              {renderRequirements("general")}
+            </div>
           </div>
         </div>
+      </section>
+
+      <footer className={styles.footer}>
+        <p>Orphanecare NetworkCopyright © 2025</p>
       </footer>
+      
     </div>
   );
 };
